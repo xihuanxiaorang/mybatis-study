@@ -3,8 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.xiaorang.mybatis.dao.UserMapper">
+    <delete id="deleteUserById">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <insert id="addUser" parameterType="top.xiaorang.mybatis.entity.User">
+        insert into user(id, name, pwd)
+        VALUES (#{id}, #{name}, #{pwd});
+    </insert>
+
+    <update id="updateUser" parameterType="top.xiaorang.mybatis.entity.User">
+        update user
+        set name = #{name},
+            pwd  = #{pwd}
+        where id = #{id}
+    </update>
+
     <select id="selectUserList" resultType="top.xiaorang.mybatis.entity.User">
         select *
         from mybatis.user;
+    </select>
+
+    <select id="selectUserById" resultType="top.xiaorang.mybatis.entity.User">
+        select *
+        from user
+        where id = #{id};
     </select>
 </mapper>
