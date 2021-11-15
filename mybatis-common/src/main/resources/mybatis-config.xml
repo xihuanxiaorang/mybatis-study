@@ -16,6 +16,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="top/xiaorang/mybatis/dao/UserMapper.xml"></mapper>
+        <mapper resource="top/xiaorang/mybatis/dao/UserMapper.xml"/>
     </mappers>
 </configuration>
