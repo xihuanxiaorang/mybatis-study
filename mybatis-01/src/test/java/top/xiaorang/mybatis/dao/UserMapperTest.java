@@ -7,7 +7,9 @@ import org.junit.Test;
 import top.xiaorang.mybatis.entity.User;
 import top.xiaorang.mybatis.utils.MybatisUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserMapperTest {
     private SqlSession sqlSession;
@@ -46,6 +48,21 @@ public class UserMapperTest {
     public void deleteUserById() {
         int res = userMapper.deleteUserById(5);
         System.out.printf("删除的记录数%s!", res);
+    }
+
+    @Test
+    public void testSelectUserByName() {
+        List<User> users = userMapper.selectUserByName("xiao");
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testSelectUsers() {
+        Map<String,Object> params = new HashMap<>();
+        params.put("id", 1);
+        params.put("name", "xiao");
+        List<User> users = userMapper.selectUsers(params);
+        users.forEach(System.out::println);
     }
 
     @After

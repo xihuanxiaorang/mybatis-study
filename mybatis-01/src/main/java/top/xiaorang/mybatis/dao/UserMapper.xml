@@ -31,4 +31,12 @@
         from user
         where id = #{id};
     </select>
+
+    <select id="selectUserByName" resultType="top.xiaorang.mybatis.entity.User">
+        select * from user where name like concat('%', #{name}, '%')
+    </select>
+
+    <select id="selectUsers" parameterType="map" resultType="top.xiaorang.mybatis.entity.User">
+        select * from user where id = #{id} and name like concat('%', #{name}, '%')
+    </select>
 </mapper>

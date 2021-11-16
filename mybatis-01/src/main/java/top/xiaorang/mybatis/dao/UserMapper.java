@@ -3,6 +3,7 @@ package top.xiaorang.mybatis.dao;
 import top.xiaorang.mybatis.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author liulei
@@ -45,4 +46,18 @@ public interface UserMapper {
      * @return 删除的记录数
      */
     int deleteUserById(Integer id);
+
+    /**
+     * 通过用户名称模糊查询用户
+     * @param name 用户名称
+     * @return 用户集合
+     */
+    List<User> selectUserByName(String name);
+
+    /**
+     * 根据id和用户名称查询用户
+     * @param params 查询条件
+     * @return 用户集合
+     */
+    List<User> selectUsers(Map<String, Object> params);
 }
