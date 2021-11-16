@@ -9,34 +9,34 @@
         where id = #{id}
     </delete>
 
-    <insert id="addUser" parameterType="top.xiaorang.mybatis.entity.User">
+    <insert id="addUser" parameterType="User">
         insert into user(id, name, pwd)
         VALUES (#{id}, #{name}, #{pwd});
     </insert>
 
-    <update id="updateUser" parameterType="top.xiaorang.mybatis.entity.User">
+    <update id="updateUser" parameterType="User">
         update user
         set name = #{name},
             pwd  = #{pwd}
         where id = #{id}
     </update>
 
-    <select id="selectUserList" resultType="top.xiaorang.mybatis.entity.User">
+    <select id="selectUserList" resultType="User">
         select *
         from mybatis.user;
     </select>
 
-    <select id="selectUserById" resultType="top.xiaorang.mybatis.entity.User">
+    <select id="selectUserById" resultType="User">
         select *
         from user
         where id = #{id};
     </select>
 
-    <select id="selectUserByName" resultType="top.xiaorang.mybatis.entity.User">
+    <select id="selectUserByName" resultType="User">
         select * from user where name like concat('%', #{name}, '%')
     </select>
 
-    <select id="selectUsers" parameterType="map" resultType="top.xiaorang.mybatis.entity.User">
+    <select id="selectUsers" parameterType="map" resultType="User">
         select * from user where id = #{id} and name like concat('%', #{name}, '%')
     </select>
 </mapper>
