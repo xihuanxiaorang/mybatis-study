@@ -14,6 +14,7 @@
     </modules>
 
     <properties>
+        <project.version>1.0-SNAPSHOT</project.version>
         <mysql.version>5.1.49</mysql.version>
         <mybatis.version>3.5.7</mybatis.version>
         <junit.version>4.13.2</junit.version>
@@ -25,7 +26,12 @@
             <dependency>
                 <groupId>top.xiaorang</groupId>
                 <artifactId>mybatis-common</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>top.xiaorang</groupId>
+                <artifactId>mybatis-01</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -54,6 +60,17 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!-- 如果properties中与外部配置文件中有同名属性，以外部配置文件中的配置优先 -->
-    <properties resource="db.properties" />
+    <properties resource="db.properties"/>
 
     <typeAliases>
         <package name="top.xiaorang.mybatis.entity"/>
@@ -23,6 +23,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="top/xiaorang/mybatis/dao/UserMapper.xml"/>
+        <!--        <mapper resource="top/xiaorang/mybatis/dao/UserMapper.xml"/>-->
+        <!--        <mapper class="top.xiaorang.mybatis.dao.UserMapper" />-->
+        <package name="top.xiaorang.mybatis.dao"/>
     </mappers>
 </configuration>
