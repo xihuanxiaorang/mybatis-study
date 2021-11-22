@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.xiaorang.mybatis.dao.UserMapper">
+    <resultMap id="UserMap" type="User">
+        <result column="pwd" property="password" />
+    </resultMap>
+
     <delete id="deleteUserById">
         delete
         from user
@@ -11,32 +15,32 @@
 
     <insert id="addUser" parameterType="User">
         insert into user(id, name, pwd)
-        VALUES (#{id}, #{name}, #{pwd});
+        VALUES (#{id}, #{name}, #{password});
     </insert>
 
     <update id="updateUser" parameterType="User">
         update user
         set name = #{name},
-            pwd  = #{pwd}
+            pwd  = #{password}
         where id = #{id}
     </update>
 
-    <select id="selectUserList" resultType="User">
+    <select id="selectUserList" resultMap="UserMap">
         select *
         from mybatis.user;
     </select>
 
-    <select id="selectUserById" resultType="User">
+    <select id="selectUserById" resultMap="UserMap">
         select *
         from user
         where id = #{id};
     </select>
 
-    <select id="selectUserByName" resultType="User">
+    <select id="selectUserByName" resultMap="UserMap">
         select * from user where name like concat('%', #{name}, '%')
     </select>
 
-    <select id="selectUsers" parameterType="map" resultType="User">
+    <select id="selectUsers" parameterType="map" resultMap="UserMap">
         select * from user where id = #{id} and name like concat('%', #{name}, '%')
     </select>
 </mapper>
