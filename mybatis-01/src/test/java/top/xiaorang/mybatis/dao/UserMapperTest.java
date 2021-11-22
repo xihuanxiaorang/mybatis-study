@@ -65,6 +65,15 @@ public class UserMapperTest {
         users.forEach(System.out::println);
     }
 
+    @Test
+    public void testSelectUsersByPage() {
+        Map<String,Integer> params = new HashMap<>();
+        params.put("offset", 2);
+        params.put("pageSize", 2);
+        List<User> users = userMapper.selectUsersByPage(params);
+        users.forEach(System.out::println);
+    }
+
     @After
     public void after() {
         sqlSession.commit();

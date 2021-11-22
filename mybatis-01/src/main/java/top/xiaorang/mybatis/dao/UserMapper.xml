@@ -43,4 +43,8 @@
     <select id="selectUsers" parameterType="map" resultMap="UserMap">
         select * from user where id = #{id} and name like concat('%', #{name}, '%')
     </select>
+
+    <select id="selectUsersByPage" parameterType="map" resultMap="UserMap">
+        select * from user limit #{offset},#{pageSize}
+    </select>
 </mapper>

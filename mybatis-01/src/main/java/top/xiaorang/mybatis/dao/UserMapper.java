@@ -60,4 +60,11 @@ public interface UserMapper {
      * @return 用户集合
      */
     List<User> selectUsers(Map<String, Object> params);
+
+    /**
+     * 分页查询用户数据
+     * @param params 查询条件(从第多少条开始查，每页多少条数据)
+     * @return 用户集合
+     */
+    List<User> selectUsersByPage(Map<String, Integer> params);
 }
