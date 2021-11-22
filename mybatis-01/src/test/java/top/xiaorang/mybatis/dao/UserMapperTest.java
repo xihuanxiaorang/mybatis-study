@@ -1,5 +1,6 @@
 package top.xiaorang.mybatis.dao;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.Before;
@@ -58,7 +59,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelectUsers() {
-        Map<String,Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
         params.put("id", 1);
         params.put("name", "xiao");
         List<User> users = userMapper.selectUsers(params);
@@ -67,10 +68,16 @@ public class UserMapperTest {
 
     @Test
     public void testSelectUsersByPage() {
-        Map<String,Integer> params = new HashMap<>();
+        Map<String, Integer> params = new HashMap<>();
         params.put("offset", 2);
         params.put("pageSize", 2);
         List<User> users = userMapper.selectUsersByPage(params);
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testSelectUsersByPage2() {
+        List<User> users = sqlSession.selectList("top.xiaorang.mybatis.dao.UserMapper.selectUserList", null, new RowBounds(2, 2));
         users.forEach(System.out::println);
     }
 
