@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.xiaorang.mybatis.dao.UserMapper">
     <resultMap id="UserMap" type="User">
-        <result column="pwd" property="password" />
+        <result column="pwd" property="password"/>
     </resultMap>
 
     <delete id="deleteUserById">
@@ -37,14 +37,21 @@
     </select>
 
     <select id="selectUserByName" resultMap="UserMap">
-        select * from user where name like concat('%', #{name}, '%')
+        select *
+        from user
+        where name like concat('%', #{name}, '%')
     </select>
 
     <select id="selectUsers" parameterType="map" resultMap="UserMap">
-        select * from user where id = #{id} and name like concat('%', #{name}, '%')
+        select *
+        from user
+        where id = #{id}
+          and name like concat('%', #{name}, '%')
     </select>
 
     <select id="selectUsersByPage" parameterType="map" resultMap="UserMap">
-        select * from user limit #{offset},#{pageSize}
+        select *
+        from user
+        limit #{offset},#{pageSize}
     </select>
 </mapper>

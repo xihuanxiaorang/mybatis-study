@@ -81,6 +81,35 @@ public class UserMapperTest {
         users.forEach(System.out::println);
     }
 
+    @Test
+    public void testSelectUserList2() {
+        List<User> users = userMapper.selectUserList2();
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testTestSelectById() {
+        User user = userMapper.selectById(1);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testAddUser2() {
+        int res = userMapper.addUser2(new User(5, "xiaohuang", "456789"));
+        System.out.printf("插入的记录数%s!", res);
+    }
+
+    @Test
+    public void testUpdateUser2() {
+        userMapper.updateUser2(new User(5, "xiaoxin", "456789"));
+    }
+
+    @Test
+    public void testDeleteUserById2() {
+        int res = userMapper.deleteUserById2(5);
+        System.out.printf("删除的记录数%s!", res);
+    }
+
     @After
     public void after() {
         sqlSession.commit();
