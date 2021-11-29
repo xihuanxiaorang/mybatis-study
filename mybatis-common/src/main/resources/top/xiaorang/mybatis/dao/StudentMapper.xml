@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.xiaorang.mybatis.dao.StudentMapper">
-    <!-- 结果集嵌套的方式 -->
+    <!-- 结果集嵌套的方式（推荐使用） -->
     <resultMap id="StudentMap2" type="Student">
         <result property="id" column="sid" />
         <result property="name" column="sname" />
