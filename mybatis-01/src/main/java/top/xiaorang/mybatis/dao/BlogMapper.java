@@ -1,5 +1,6 @@
 package top.xiaorang.mybatis.dao;
 
+import org.apache.ibatis.annotations.Param;
 import top.xiaorang.mybatis.entity.Blog;
 
 import java.util.List;
@@ -31,4 +32,11 @@ public interface BlogMapper {
      * @return 博客列表
      */
     List<Blog> findBlogs(Map<String, Object> params);
+
+    /**
+     * 根据ids查询博客列表
+     * @param ids id集合
+     * @return 博客列表
+     */
+    List<Blog> findBlogsById(@Param("ids") List<String> ids);
 }

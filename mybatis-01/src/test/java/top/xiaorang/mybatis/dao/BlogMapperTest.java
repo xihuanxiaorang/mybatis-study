@@ -7,6 +7,7 @@ import org.junit.Test;
 import top.xiaorang.mybatis.entity.Blog;
 import top.xiaorang.mybatis.utils.MybatisUtil;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,13 @@ public class BlogMapperTest {
         params.put("author", "xiaoxing");
         params.put("id", "95231459-b135-9ca3-386a-24992d5e2c72");
         blogMapper.updateBlog(params);
+    }
+
+    @Test
+    public void testFindBlogsById() {
+        List<String> ids = Arrays.asList("95231459-b135-9ca3-386a-24992d5e2c72", "69824e2e-8048-0bf4-3477-0e04299be4a9");
+        List<Blog> blogs = blogMapper.findBlogsById(ids);
+        blogs.forEach(System.out::println);
     }
 
     @After
