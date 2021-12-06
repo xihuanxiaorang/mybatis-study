@@ -56,6 +56,12 @@ public class BlogMapperTest {
         List<String> ids = Arrays.asList("95231459-b135-9ca3-386a-24992d5e2c72", "69824e2e-8048-0bf4-3477-0e04299be4a9");
         List<Blog> blogs = blogMapper.findBlogsById(ids);
         blogs.forEach(System.out::println);
+        System.out.println("============================");
+        // 测试一级缓存，在同一个sqlSession中查询相同的数据，查看到下面的sql语句没有去查询数据库
+        List<Blog> blogs2 = blogMapper.findBlogsById(ids);
+        blogs2.forEach(System.out::println);
+        // 取出来的对象是否是同一个
+        System.out.println(blogs == blogs2);
     }
 
     @After
