@@ -14,12 +14,16 @@ import java.util.Map;
 
 public class BlogMapperTest {
     private SqlSession sqlSession;
+    private SqlSession sqlSession2;
     private BlogMapper blogMapper;
+    private BlogMapper blogMapper2;
 
     @Before
     public void before() {
         sqlSession = MybatisUtil.getSqlSession();
+        sqlSession2 = MybatisUtil.getSqlSession();
         blogMapper = sqlSession.getMapper(BlogMapper.class);
+        blogMapper2 = sqlSession2.getMapper(BlogMapper.class);
     }
 
     @Test
@@ -62,6 +66,18 @@ public class BlogMapperTest {
         blogs2.forEach(System.out::println);
         // 取出来的对象是否是同一个
         System.out.println(blogs == blogs2);
+    }
+
+    @Test
+    public void testCache2() {
+        List<String> ids = Arrays.asList("95231459-b135-9ca3-386a-24992d5e2c72", "69824e2e-8048-0bf4-3477-0e04299be4a9");
+        List<Blog> blogs2 = blogMapper2.findBlogsById(ids);
+        blogs2.forEach(System.out::println);
+        // sqlSession2 关闭的时候会将一级缓存保存到二级缓存
+        sqlSession2.close();
+        System.out.println("================================");
+        List<Blog> blogs = blogMapper.findBlogsById(ids);
+        blogs.forEach(System.out::println);
     }
 
     @After
